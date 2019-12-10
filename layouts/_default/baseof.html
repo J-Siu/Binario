@@ -14,7 +14,11 @@
 	{{- if .Site.Params.twitter_cards }}
 		{{ template "_internal/twitter_cards.html" . }}
 	{{- end }}
-	<link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+	{{- $cssReboot := resources.Get "css/reboot.css" }}
+	{{- $cssMain := resources.Get "css/main.css" }}
+	{{- $cssPrint := resources.Get "css/print.css" }}
+	{{- $style := slice $cssReboot $cssMain $cssPrint | resources.Concat "css/bundle.css" }}
+	<link rel="stylesheet" href="{{ $style.RelPermalink }}">
 	{{- range .Site.Params.customCSS }}
 	<link rel="stylesheet" href="{{ . | relURL }}">
 	{{- end }}

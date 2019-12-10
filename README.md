@@ -41,7 +41,7 @@ Original demo from Vimux (no AdSense):
     - [Post Meta](#post-meta)
     - [Related Content](#related-content)
     - [Share Buttons](#share-buttons)
-    - [Thumbnail Image](#thumbnail-image)
+    - [Featured Image](#featured-image)
     - [Footer Social Icons](#footer-social-icons)
     - [Web App Manifest](#web-app-manifest)
     - [Google AdSense](#google-adsense)
@@ -51,8 +51,8 @@ Original demo from Vimux (no AdSense):
 ## Installation
 
 *First of all, you will need to [install Hugo](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo) and
-[create new site](https://gohugo.io/getting-started/quick-start/#step-2-create-a-new-site). Also, you have git installed
-on your machine and you are familiar with basic git usage. After that, you ready to install **Binario**.*
+[create a new site](https://gohugo.io/getting-started/quick-start/#step-2-create-a-new-site). Also, you have git
+installed on your machine and you are familiar with basic git usage. After that, you ready to install **Binario**.*
 
 There are three different ways you can install **Binario**. Choose one of the installation methods listed below and
 follow the instructions.
@@ -164,6 +164,9 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
   mathjaxConfig = "TeX-AMS-MML_HTMLorMML" # Specify MathJax config. Optional
   hideNoPostsWarning = false # Don't show no posts empty state warning in main page, if true
 
+[Params.Featured]
+  previewOnly = false # Show only preview featured image
+
 [Params.Social]
   email = "example@example.com"
   facebook = "username"
@@ -248,6 +251,12 @@ authorbox: true # Enable/disable Authorbox for specific post
 toc: true # Enable/disable Table of Contents for specific post
 mathjax: true # Enable/disable MathJax for specific post
 related: true # Enable/disable Related content for specific post
+featured:
+  url: image.jpg # relative path of the image
+  alt: A scale model of the Eiffel tower # alternate text for the image
+  caption: Eiffel tower model # image caption
+  credit: Unknown author # image credit
+  previewOnly: false # show only preview image (true/false)
 ---
 ```
 
@@ -306,7 +315,13 @@ All custom JS files will be added before closing body tag of a `baseof.html` fil
 
 #### Post Meta
 
-You may activate post meta fields with `.Site.Params.post_meta` parameter.
+Post metadata are relevant information about your post such as published date, last modified date, category, etc. You
+may activate post meta fields with `post_meta` parameter in config:
+
+```toml
+[Params]
+  post_meta = ["date", "categories"]
+```
 
 #### Related Content
 
@@ -321,10 +336,33 @@ To display share buttons, set up `[Params.Share]` specific parameters in your si
 
 Available share buttons: Facebook, Twitter, Reddit, Telegram, LinkedIn, VK, Pocket, Pinterest
 
-#### Thumbnail Image
+#### Featured Image
 
-You can add thumbnail image to your content page. Just put `thumbnail.*` image file in
+There are two main different ways to add a featured image for a page.
+
+**Option 1.** Put `featured.*` or `thumbnail.*` image file in the
 [page bundle](https://gohugo.io/content-management/page-bundles/).
+
+**Option 2.** Put any image in the page bundle & specify `featured` param in the page's front matter.
+
+You may put any image in the page bundle and specify `featured` param in the page's front matter:
+
+```yaml
+featured: image.jpg
+```
+
+Or you can add some additional params like `alt`, `caption`, `credit` and `previewOnly`:
+
+```yaml
+featured:
+  url: image.jpg
+  alt: A scale model of the Eiffel tower standing on a map
+  caption: Eiffel tower model
+  credit: Unknown author
+  previewOnly: false
+```
+
+**Note**: `caption` and `credit` appear only on single pages, not summaries.
 
 #### Footer Social Icons
 
