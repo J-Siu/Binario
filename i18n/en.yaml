@@ -1,23 +1,24 @@
-# Post
-- id: post_toc
-  translation: Table of Contents
+# Entry
+- id: entry_toc
+  translation: "Table of Contents"
 
+# Entry meta
 - id: meta_lastmod
-  translation: Updated
+  translation: "Updated"
 
 - id: meta_categories
-  translation: Categories
+  translation: "Categories"
 
 # Share
 - id: share-caption
-  translation: Share on
+  translation: "Share on"
 
 - id: save-caption
-  translation: Save to
+  translation: "Save to"
 
 # Related
 - id: related_title
-  translation: Related
+  translation: "Related"
 
 # Footer
 - id: footer_credits
