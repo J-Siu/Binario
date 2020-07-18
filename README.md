@@ -1,3 +1,5 @@
+> I am moving this fork to archive and focus on [SK3](https://github.com/J-Siu/hugo-theme-sk3).
+
 # Binario with AdSense
 
 **Binario** is a responsive card-based & code-light Hugo theme.
